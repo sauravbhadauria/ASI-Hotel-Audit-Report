@@ -7,10 +7,7 @@
     
     <!-- External Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Google Fonts -->
@@ -25,10 +22,8 @@
             --accent-3: #2B4A93;
             --gradient-1: linear-gradient(135deg, #00124E 0%, #003479 100%);
             --gradient-2: linear-gradient(135deg, #25408F 0%, #2B4A93 100%);
-            --gradient-3: linear-gradient(135deg, #003479 0%, #00124E 100%);
             --shadow-3d: 0 20px 40px rgba(0, 18, 78, 0.3), 0 0 0 1px rgba(255,255,255,0.1);
             --shadow-card: 0 10px 30px rgba(0, 18, 78, 0.15);
-            --glow: 0 0 20px rgba(37, 64, 143, 0.5);
         }
         
         * {
@@ -45,7 +40,6 @@
             overflow-x: hidden;
         }
         
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -55,8 +49,7 @@
             z-index: -1;
             background: 
                 radial-gradient(circle at 20% 80%, rgba(0, 52, 121, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(37, 64, 143, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(43, 74, 147, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 80% 20%, rgba(37, 64, 143, 0.1) 0%, transparent 50%);
         }
         
         .floating-shapes {
@@ -99,7 +92,6 @@
             50% { transform: translateY(-30px) rotate(180deg); }
         }
         
-        /* Header */
         .header {
             background: var(--gradient-1);
             padding: 40px 20px;
@@ -116,14 +108,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(255,255,255,0.03) 10px,
-                    rgba(255,255,255,0.03) 20px
-                );
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
             animation: slide 30s linear infinite;
         }
         
@@ -149,12 +134,6 @@
             border-radius: 50px;
             margin-bottom: 20px;
             border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .logo-badge i {
-            width: 32px;
-            height: 32px;
-            color: white;
         }
         
         .logo-badge span {
@@ -185,7 +164,6 @@
             line-height: 1.6;
         }
         
-        /* Input Section */
         .input-section {
             max-width: 1200px;
             margin: -40px auto 40px;
@@ -209,15 +187,6 @@
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 2px solid var(--accent-1);
-        }
-        
-        .input-header i {
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-2);
-            color: white;
-            border-radius: 12px;
-            padding: 12px;
         }
         
         .input-header h2 {
@@ -248,12 +217,6 @@
             gap: 8px;
         }
         
-        .form-group label i {
-            width: 18px;
-            height: 18px;
-            color: var(--secondary);
-        }
-        
         .form-group input {
             padding: 16px 20px;
             border: 2px solid #e1e8ed;
@@ -270,7 +233,6 @@
             transform: translateY(-2px);
         }
         
-        /* Dynamic OTA Section */
         .ota-section {
             background: linear-gradient(135deg, rgba(247, 248, 252, 0.8) 0%, rgba(255,255,255,0.9) 100%);
             border-radius: 16px;
@@ -321,6 +283,10 @@
             margin-bottom: 15px;
             align-items: center;
             animation: slideIn 0.3s ease-out;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         
         @keyframes slideIn {
@@ -374,27 +340,11 @@
             overflow: hidden;
         }
         
-        .btn-generate::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .btn-generate:hover::before {
-            left: 100%;
-        }
-        
         .btn-generate:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(0, 18, 78, 0.5);
         }
         
-        /* Report Section */
         .report-section {
             max-width: 1400px;
             margin: 0 auto;
@@ -412,7 +362,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Share Bar */
         .share-bar {
             background: white;
             border-radius: 16px;
@@ -429,21 +378,6 @@
             z-index: 100;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 52, 121, 0.1);
-        }
-        
-        .share-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .share-info i {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-2);
-            color: white;
-            border-radius: 10px;
-            padding: 10px;
         }
         
         .share-info h3 {
@@ -485,12 +419,6 @@
             border: 2px solid var(--secondary);
         }
         
-        .btn-share:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 18, 78, 0.2);
-        }
-        
-        /* 3D Cards */
         .section-3d {
             background: white;
             border-radius: 24px;
@@ -498,12 +426,6 @@
             margin-bottom: 30px;
             box-shadow: var(--shadow-3d);
             border: 1px solid rgba(0, 52, 121, 0.1);
-            transform-style: preserve-3d;
-            transition: transform 0.3s;
-        }
-        
-        .section-3d:hover {
-            transform: translateY(-5px) rotateX(2deg);
         }
         
         .section-header-3d {
@@ -525,27 +447,14 @@
             justify-content: center;
             color: white;
             box-shadow: 0 10px 30px rgba(37, 64, 143, 0.4);
-            transform: translateZ(20px);
-        }
-        
-        .icon-3d i {
-            width: 32px;
-            height: 32px;
         }
         
         .section-title h2 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.8em;
             color: var(--primary);
-            margin-bottom: 5px;
         }
         
-        .section-title p {
-            color: var(--accent-3);
-            font-size: 0.95em;
-        }
-        
-        /* Score Widgets */
         .score-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -560,18 +469,6 @@
             text-align: center;
             box-shadow: var(--shadow-card);
             border: 1px solid rgba(0, 52, 121, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .score-widget::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-2);
         }
         
         .circular-progress {
@@ -579,10 +476,6 @@
             height: 140px;
             margin: 20px auto;
             position: relative;
-        }
-        
-        .circular-progress svg {
-            transform: rotate(-90deg);
         }
         
         .progress-bg {
@@ -599,7 +492,6 @@
             stroke-dasharray: 377;
             stroke-dashoffset: 377;
             transition: stroke-dashoffset 2s ease-out;
-            filter: drop-shadow(0 4px 6px rgba(37, 64, 143, 0.3));
         }
         
         .progress-text {
@@ -613,47 +505,6 @@
             color: var(--primary);
         }
         
-        .score-label {
-            font-weight: 600;
-            color: var(--accent-3);
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .score-value {
-            font-size: 2em;
-            font-weight: 700;
-            margin: 10px 0;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        .score-excellent { color: #27ae60; }
-        .score-good { color: #f39c12; }
-        .score-poor { color: #e74c3c; }
-        
-        /* 3D Charts Container */
-        .chart-3d-container {
-            background: linear-gradient(135deg, var(--accent-1) 0%, #fff 100%);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 25px 0;
-            box-shadow: inset 0 2px 10px rgba(0, 18, 78, 0.05);
-            position: relative;
-        }
-        
-        .chart-3d-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 5%;
-            width: 90%;
-            height: 20px;
-            background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        
-        /* AI Suggestion Cards */
         .ai-suggestion {
             background: linear-gradient(135deg, #fff 0%, #f0f4ff 100%);
             border-radius: 16px;
@@ -661,17 +512,6 @@
             margin: 20px 0;
             border-left: 4px solid var(--secondary);
             box-shadow: var(--shadow-card);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ai-suggestion::before {
-            content: '🤖';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
-            opacity: 0.1;
         }
         
         .ai-badge {
@@ -687,60 +527,21 @@
             margin-bottom: 12px;
         }
         
-        .ai-badge i {
-            width: 16px;
-            height: 16px;
-        }
-        
-        .ai-suggestion h4 {
-            color: var(--primary);
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        .ai-suggestion p {
-            color: var(--accent-3);
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
         .asi-solution {
             background: var(--gradient-1);
             color: white;
             padding: 20px;
             border-radius: 12px;
             margin-top: 15px;
-            position: relative;
-            overflow: hidden;
         }
         
-        .asi-solution::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        .chart-3d-container {
+            background: linear-gradient(135deg, var(--accent-1) 0%, #fff 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
         }
         
-        .asi-solution-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            font-size: 1.1em;
-        }
-        
-        .asi-solution p {
-            color: rgba(255,255,255,0.95);
-            font-size: 0.95em;
-            line-height: 1.5;
-        }
-        
-        /* 3D Table */
         .table-3d-wrapper {
             background: white;
             border-radius: 20px;
@@ -775,62 +576,6 @@
             color: var(--primary);
         }
         
-        .table-3d tr:hover td {
-            background: var(--accent-1);
-            transform: scale(1.01);
-            transition: all 0.2s;
-        }
-        
-        /* OTA Cards 3D */
-        .ota-grid-3d {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 25px 0;
-        }
-        
-        .ota-card-3d {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--shadow-card);
-            border: 1px solid rgba(0, 52, 121, 0.1);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ota-card-3d::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient-2);
-        }
-        
-        .ota-card-3d:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: var(--shadow-3d);
-        }
-        
-        .ota-icon-3d {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-2);
-            border-radius: 20px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2em;
-            box-shadow: 0 10px 30px rgba(37, 64, 143, 0.3);
-        }
-        
-        /* Status Badges 3D */
         .status-3d {
             display: inline-flex;
             align-items: center;
@@ -839,7 +584,6 @@
             border-radius: 20px;
             font-size: 0.85em;
             font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .status-success {
@@ -857,7 +601,57 @@
             color: #721c24;
         }
         
-        /* QR Code Section */
+        .ota-grid-3d {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .ota-card-3d {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0, 52, 121, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .ota-card-3d:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-3d);
+        }
+        
+        .ota-icon-3d {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-2);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+        }
+        
+        .action-items {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .action-items li {
+            padding: 15px;
+            margin: 10px 0;
+            background: var(--accent-1);
+            border-left: 4px solid var(--secondary);
+            border-radius: 0 12px 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
         .qr-section {
             background: white;
             border-radius: 20px;
@@ -873,27 +667,22 @@
             background: white;
             border-radius: 16px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
-        /* Print Styles */
         @media print {
             body { background: white; }
-            .input-section, .share-bar, .btn-generate { display: none !important; }
+            .input-section, .share-bar { display: none !important; }
             .report-section { display: block !important; }
-            .section-3d { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .section-3d { break-inside: avoid; }
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .header h1 { font-size: 2em; }
             .form-grid { grid-template-columns: 1fr; }
             .ota-row { grid-template-columns: 1fr; }
             .share-bar { flex-direction: column; }
-            .share-actions { width: 100%; justify-content: center; }
         }
         
-        /* Loading Animation */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -929,27 +718,23 @@
             color: white;
             margin-top: 20px;
             font-size: 1.2em;
-            text-align: center;
         }
     </style>
 </head>
 <body>
-    <!-- Background Animation -->
     <div class="bg-animation"></div>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
     
-    <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
-        <div>
+        <div style="text-align: center;">
             <div class="loader"></div>
             <div class="loading-text">AI Analyzing Hotel Data...</div>
         </div>
     </div>
     
-    <!-- SVG Gradients -->
     <svg width="0" height="0" style="position:absolute;">
         <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -959,23 +744,20 @@
         </defs>
     </svg>
     
-    <!-- Header -->
     <header class="header">
         <div class="header-content">
             <div class="logo-badge">
-                <i data-lucide="building-2"></i>
-                <span>ASI HOSPITALITY SOLUTIONS</span>
+                <span>🏨 ASI HOSPITALITY SOLUTIONS</span>
             </div>
             <h1>Hotel Digital Audit Report</h1>
             <p>AI-Powered Comprehensive Analysis & Strategic Growth Recommendations</p>
         </div>
     </header>
     
-    <!-- Input Section -->
     <section class="input-section">
         <div class="input-card">
             <div class="input-header">
-                <i data-lucide="clipboard-list"></i>
+                <div style="width: 48px; height: 48px; background: var(--gradient-2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5em;">📋</div>
                 <div>
                     <h2>Audit Configuration</h2>
                     <p style="color: var(--accent-3); margin-top: 5px;">Enter hotel details and digital presence URLs for AI analysis</p>
@@ -984,50 +766,45 @@
             
             <div class="form-grid">
                 <div class="form-group">
-                    <label><i data-lucide="hotel"></i>Hotel Name *</label>
+                    <label>🏨 Hotel Name *</label>
                     <input type="text" id="hotelName" placeholder="e.g., Grand Plaza Hotel & Spa" required>
                 </div>
                 <div class="form-group">
-                    <label><i data-lucide="globe"></i>Hotel Website URL (Optional)</label>
+                    <label>🌐 Hotel Website URL (Optional)</label>
                     <input type="url" id="websiteUrl" placeholder="https://www.hotel.com">
                 </div>
                 <div class="form-group">
-                    <label><i data-lucide="star"></i>TripAdvisor URL (Optional)</label>
+                    <label>⭐ TripAdvisor URL (Optional)</label>
                     <input type="url" id="tripadvisorUrl" placeholder="https://www.tripadvisor.com/...">
                 </div>
                 <div class="form-group">
-                    <label><i data-lucide="message-square"></i>Google Reviews URL (Optional)</label>
+                    <label>💬 Google Reviews URL (Optional)</label>
                     <input type="url" id="googleUrl" placeholder="https://g.page/.../reviews">
                 </div>
             </div>
             
-            <!-- Dynamic OTA Section -->
             <div class="ota-section">
                 <div class="ota-header">
-                    <h3><i data-lucide="external-link" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px;"></i>OTA Platforms (Optional)</h3>
-                    <button class="btn-add" onclick="addOtaField()">
-                        <i data-lucide="plus" style="width: 18px; height: 18px;"></i>
+                    <h3>🔗 OTA Platforms (Optional)</h3>
+                    <button type="button" class="btn-add" onclick="addOtaField()">
+                        <span style="font-size: 1.2em;">+</span>
                         Add OTA
                     </button>
                 </div>
-                <div id="otaContainer">
-                    <!-- Dynamic OTA fields will appear here -->
-                </div>
+                <div id="otaContainer"></div>
             </div>
             
-            <button class="btn-generate" onclick="generateReport()">
-                <i data-lucide="sparkles" style="width: 24px; height: 24px;"></i>
+            <button type="button" class="btn-generate" onclick="generateReport()">
+                <span style="font-size: 1.3em;">✨</span>
                 Generate AI Audit Report
             </button>
         </div>
     </section>
     
-    <!-- Report Section -->
     <section class="report-section" id="reportSection">
-        <!-- Share Bar -->
         <div class="share-bar">
             <div class="share-info">
-                <i data-lucide="file-text"></i>
+                <div style="width: 40px; height: 40px; background: var(--gradient-2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em;">📄</div>
                 <div>
                     <h3 id="reportHotelName">Hotel Audit Report</h3>
                     <p>Generated on <span id="reportDate"></span> • Report ID: <span id="reportId"></span></p>
@@ -1035,22 +812,17 @@
             </div>
             <div class="share-actions">
                 <button class="btn-share btn-secondary" onclick="copyReportLink()">
-                    <i data-lucide="link" style="width: 18px; height: 18px;"></i>
-                    Copy Link
+                    🔗 Copy Link
                 </button>
                 <button class="btn-share btn-primary" onclick="downloadPDF()">
-                    <i data-lucide="download" style="width: 18px; height: 18px;"></i>
-                    Download PDF
+                    ⬇️ Download PDF
                 </button>
             </div>
         </div>
         
-        <!-- Executive Summary -->
         <div class="section-3d">
             <div class="section-header-3d">
-                <div class="icon-3d">
-                    <i data-lucide="activity"></i>
-                </div>
+                <div class="icon-3d">📊</div>
                 <div class="section-title">
                     <h2>Executive Summary</h2>
                     <p>AI-Generated Digital Health Assessment & Revenue Opportunity Analysis</p>
@@ -1059,7 +831,7 @@
             
             <div class="score-grid">
                 <div class="score-widget">
-                    <div class="score-label">Overall Digital Score</div>
+                    <div style="font-weight: 600; color: var(--accent-3); font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">Overall Digital Score</div>
                     <div class="circular-progress">
                         <svg width="140" height="140">
                             <circle class="progress-bg" cx="70" cy="70" r="60"></circle>
@@ -1071,53 +843,46 @@
                 </div>
                 
                 <div class="score-widget" id="websiteScoreWidget" style="display: none;">
-                    <div class="score-label">Website Health</div>
-                    <div class="score-value score-poor" id="websiteScoreVal">58/100</div>
-                    <div class="progress-bar" style="height: 8px; background: #e1e8ed; border-radius: 4px; margin-top: 10px; overflow: hidden;">
+                    <div style="font-weight: 600; color: var(--accent-3); font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">Website Health</div>
+                    <div style="font-size: 2em; font-weight: 700; margin: 10px 0; color: #e74c3c;" id="websiteScoreVal">58/100</div>
+                    <div style="height: 8px; background: #e1e8ed; border-radius: 4px; margin-top: 10px; overflow: hidden;">
                         <div style="height: 100%; width: 58%; background: var(--gradient-2); border-radius: 4px;"></div>
                     </div>
                 </div>
                 
                 <div class="score-widget">
-                    <div class="score-label">OTA Visibility</div>
-                    <div class="score-value score-good" id="otaScoreVal">68/100</div>
-                    <div class="progress-bar" style="height: 8px; background: #e1e8ed; border-radius: 4px; margin-top: 10px; overflow: hidden;">
+                    <div style="font-weight: 600; color: var(--accent-3); font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">OTA Visibility</div>
+                    <div style="font-size: 2em; font-weight: 700; margin: 10px 0; color: #f39c12;" id="otaScoreVal">68/100</div>
+                    <div style="height: 8px; background: #e1e8ed; border-radius: 4px; margin-top: 10px; overflow: hidden;">
                         <div style="height: 100%; width: 68%; background: var(--gradient-2); border-radius: 4px;"></div>
                     </div>
                 </div>
                 
                 <div class="score-widget">
-                    <div class="score-label">Review Response Rate</div>
-                    <div class="score-value score-poor" id="reviewScoreVal">34%</div>
-                    <div class="progress-bar" style="height: 8px; background: #e1e8ed; border-radius: 4px; margin-top: 10px; overflow: hidden;">
+                    <div style="font-weight: 600; color: var(--accent-3); font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px;">Review Response Rate</div>
+                    <div style="font-size: 2em; font-weight: 700; margin: 10px 0; color: #e74c3c;" id="reviewScoreVal">34%</div>
+                    <div style="height: 8px; background: #e1e8ed; border-radius: 4px; margin-top: 10px; overflow: hidden;">
                         <div style="height: 100%; width: 34%; background: var(--gradient-2); border-radius: 4px;"></div>
                     </div>
                 </div>
             </div>
             
             <div class="ai-suggestion">
-                <div class="ai-badge">
-                    <i data-lucide="brain-circuit" style="width: 16px; height: 16px;"></i>
-                    AI Insight
-                </div>
+                <div class="ai-badge">🤖 AI Insight</div>
                 <h4>Revenue Optimization Opportunity Identified</h4>
                 <p>Based on industry benchmarking and competitive analysis, this hotel is potentially losing <strong>$18,500/month</strong> in revenue due to digital inefficiencies. The AI analysis indicates critical gaps in direct booking conversion, rate parity management, and metasearch visibility.</p>
                 <div class="asi-solution">
-                    <div class="asi-solution-header">
-                        <i data-lucide="zap" style="width: 20px; height: 20px;"></i>
-                        ASI Integrated Solution Impact
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 700; font-size: 1.1em;">
+                        <span>⚡</span> ASI Integrated Solution Impact
                     </div>
                     <p>Implementation of ASI's unified PMS, Channel Manager, and Booking Engine typically results in 35-42% increase in direct bookings and 28% reduction in distribution costs within 90 days. Our AI-driven revenue management module automatically adjusts rates based on demand forecasting, competitor analysis, and local events.</p>
                 </div>
             </div>
         </div>
         
-        <!-- Website Analysis (Conditional) -->
         <div class="section-3d" id="websiteSection" style="display: none;">
             <div class="section-header-3d">
-                <div class="icon-3d">
-                    <i data-lucide="globe"></i>
-                </div>
+                <div class="icon-3d">🌐</div>
                 <div class="section-title">
                     <h2>Website Performance Analysis</h2>
                     <p>Technical SEO, Speed Optimization & Mobile Experience Assessment</p>
@@ -1158,3 +923,611 @@
                             <td><strong>Core Web Vitals</strong></td>
                             <td><span class="status-3d status-warning">Needs Work</span></td>
                             <td>Good</td>
+                            <td>-12% SEO ranking</td>
+                            <td><span class="status-3d status-warning">Medium</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>HTTPS Security</strong></td>
+                            <td><span class="status-3d status-success">Active</span></td>
+                            <td>Required</td>
+                            <td>Baseline</td>
+                            <td><span class="status-3d status-success">Good</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="ai-suggestion">
+                <div class="ai-badge">🤖 AI Recommendation</div>
+                <h4>Critical: Website Speed Optimization Required</h4>
+                <p>Your website loads in 4.8 seconds, which is 92% slower than industry leaders. AI analysis shows that 53% of mobile users abandon sites that take longer than 3 seconds to load. This is costing you approximately 120 potential direct bookings monthly.</p>
+                <div class="asi-solution">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 700; font-size: 1.1em;">
+                        <span>🚀</span> ASI Booking Engine Advantage
+                    </div>
+                    <p>ASI's cloud-native booking engine loads in under 0.8 seconds with 99.9% uptime. Features include: Global CDN delivery, automatic image optimization, lazy loading, and mobile-first responsive design. Hotels using ASI see average conversion rate increases of 35% within 60 days.</p>
+                </div>
+            </div>
+            
+            <div class="ai-suggestion">
+                <div class="ai-badge">🤖 AI Recommendation</div>
+                <h4>Mobile Experience Gap Detected</h4>
+                <p>68% of your traffic comes from mobile devices, but your mobile experience score is 32 points below industry standard. Touch targets are too small, text is unreadable without zooming, and the booking form has 12 fields (industry best practice: 6 fields).</p>
+                <div class="asi-solution">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 700; font-size: 1.1em;">
+                        <span>📱</span> ASI Mobile-First Solution
+                    </div>
+                    <p>ASI provides thumb-friendly navigation, one-tap Apple/Google Pay integration, and 3-click booking completion. Our Progressive Web App (PWA) technology allows guests to book offline and receive push notifications, increasing re-engagement by 45%.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-3d" id="reviewSection" style="display: none;">
+            <div class="section-header-3d">
+                <div class="icon-3d">⭐</div>
+                <div class="section-title">
+                    <h2>Review Performance Analysis</h2>
+                    <p>Multi-Platform Reputation Management & Guest Sentiment Analysis</p>
+                </div>
+            </div>
+            
+            <div class="chart-3d-container">
+                <canvas id="reviewChart" height="300"></canvas>
+            </div>
+            
+            <div class="ota-grid-3d" id="reviewCards">
+                <!-- Review cards will be dynamically inserted here -->
+            </div>
+            
+            <div class="ai-suggestion">
+                <div class="ai-badge">🤖 AI Analysis</div>
+                <h4>Low Response Rate Impacting Bookings</h4>
+                <p>AI sentiment analysis shows that hotels responding to 90%+ of reviews within 24 hours achieve 12% higher booking conversion rates. Your current 34% response rate is significantly below the 78% industry average. Unresponded negative reviews reduce booking likelihood by 22%.</p>
+                <div class="asi-solution">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 700; font-size: 1.1em;">
+                        <span>💬</span> ASI Reputation Management
+                    </div>
+                    <p>ASI PMS includes unified inbox for all review platforms, AI-generated response suggestions based on sentiment analysis, and automated escalation for reviews requiring management attention. Automated alerts ensure 95%+ response rate within 4 hours.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-3d" id="otaSection" style="display: none;">
+            <div class="section-header-3d">
+                <div class="icon-3d">🔷</div>
+                <div class="section-title">
+                    <h2>OTA Performance & Rate Parity Analysis</h2>
+                    <p>Channel Distribution Efficiency & Competitive Positioning</p>
+                </div>
+            </div>
+            
+            <div class="table-3d-wrapper">
+                <table class="table-3d" id="otaTable">
+                    <thead>
+                        <tr>
+                            <th>OTA Platform</th>
+                            <th>Room Types</th>
+                            <th>Photo Count</th>
+                            <th>Rate Parity Status</th>
+                            <th>Commission Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody id="otaTableBody">
+                        <!-- OTA rows will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="ai-suggestion">
+                <div class="ai-badge">🤖 AI Alert</div>
+                <h4>Rate Parity Violation Detected</h4>
+                <p>AI monitoring detected price undercutting on Expedia ($25 lower than your direct rate). This is cannibalizing direct bookings and increasing your cost of acquisition by 18%. Industry data shows that 65% of guests check 3+ sites before booking - rate inconsistency drives them to OTAs.</p>
+                <div class="asi-solution">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 700; font-size: 1.1em;">
+                        <span>⚖️</span> ASI Channel Manager - Rate Parity Guard
+                    </div>
+                    <p>Real-time rate synchronization across 150+ channels with instant updates (under 30 seconds). AI-powered parity monitoring alerts you to violations within 5 minutes. Smart pricing rules ensure direct rates are always 5-10% lower than OTAs after commission, protecting your margins while driving direct bookings.</p>
+                </div>
+            </div>
+            
+            <div class="ai-suggestion">
+                <div class="ai-badge">🤖 AI Opportunity</div>
+                <h4>Inventory Distribution Gap</h4>
+                <p>You're only listing 60% of room types on OTAs, missing visibility to high-value guest segments (suites on luxury channels, family rooms on leisure OTAs). AI analysis suggests you're missing $8,200/month in potential revenue from untapped segments.</p>
+                <div class="asi-solution">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 700; font-size: 1.1em;">
+                        <span>🎯</span> ASI Smart Distribution
+                    </div>
+                    <p>Automated room type mapping to each OTA's specific categorization. AI suggests which room types to promote on which channels based on historical performance data. Dynamic minimum stay and advance booking rules maximize revenue per channel.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-3d">
+            <div class="section-header-3d">
+                <div class="icon-3d">💰</div>
+                <div class="section-title">
+                    <h2>Revenue Optimization Strategy</h2>
+                    <p>AI-Generated 90-Day Growth Roadmap</p>
+                </div>
+            </div>
+            
+            <div class="chart-3d-container">
+                <canvas id="revenueChart" height="300"></canvas>
+            </div>
+            
+            <h3 style="margin: 30px 0 20px; color: var(--primary); font-family: 'Space Grotesk', sans-serif;">Priority Action Items</h3>
+            <ul class="action-items" id="actionItems">
+                <!-- Action items will be dynamically inserted here -->
+            </ul>
+            
+            <div class="ai-suggestion">
+                <div class="ai-badge">🤖 AI Forecast</div>
+                <h4>Dynamic Pricing Implementation Impact</h4>
+                <p>Your current static pricing strategy leaves significant revenue on the table. AI analysis of your market shows demand spikes of 40-60% during weekends and local events that you're not capturing. Static rates during high-demand periods cost approximately $12,000/month in lost ADR.</p>
+                <div class="asi-solution">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 700; font-size: 1.1em;">
+                        <span>📈</span> ASI AI Revenue Manager
+                    </div>
+                    <p>Machine learning algorithms analyze 200+ data points (competitor rates, local events, flight bookings, weather, historical trends) to recommend optimal rates. Automated rules adjust prices up to 24 times daily. Hotels using ASI Revenue Manager see 15-22% ADR increase and 8% occupancy boost.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="qr-section">
+            <h3 style="color: var(--primary); margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;">📱 Scan to Access This Report</h3>
+            <div id="qrcode"></div>
+            <p style="color: var(--accent-3); margin-top: 15px;">Share this QR code with stakeholders for instant access to the full audit report</p>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Lucide icons when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            // Add one default OTA field
+            addOtaField();
+        });
+
+        let otaCount = 0;
+        let reportData = {};
+
+        // Function to add OTA fields dynamically
+        function addOtaField() {
+            otaCount++;
+            const container = document.getElementById('otaContainer');
+            
+            const otaRow = document.createElement('div');
+            otaRow.className = 'ota-row';
+            otaRow.id = `ota-row-${otaCount}`;
+            
+            otaRow.innerHTML = `
+                <input type="text" placeholder="OTA Name (e.g., Booking.com)" id="ota-name-${otaCount}" required>
+                <input type="url" placeholder="https://www.booking.com/hotel..." id="ota-url-${otaCount}" required>
+                <button type="button" class="btn-remove" onclick="removeOtaField(${otaCount})" title="Remove OTA">
+                    ✕
+                </button>
+            `;
+            
+            container.appendChild(otaRow);
+            
+            // Animate the new row
+            otaRow.style.opacity = '0';
+            otaRow.style.transform = 'translateX(-20px)';
+            setTimeout(() => {
+                otaRow.style.opacity = '1';
+                otaRow.style.transform = 'translateX(0)';
+            }, 10);
+        }
+
+        // Function to remove OTA field
+        function removeOtaField(id) {
+            const row = document.getElementById(`ota-row-${id}`);
+            if (row) {
+                row.style.opacity = '0';
+                row.style.transform = 'translateX(20px)';
+                setTimeout(() => {
+                    row.remove();
+                }, 300);
+            }
+        }
+
+        // Function to generate report
+        function generateReport() {
+            // Get hotel name
+            const hotelName = document.getElementById('hotelName').value.trim();
+            if (!hotelName) {
+                alert('Please enter Hotel Name');
+                document.getElementById('hotelName').focus();
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loadingOverlay').classList.add('active');
+
+            // Collect data
+            reportData = {
+                hotelName: hotelName,
+                websiteUrl: document.getElementById('websiteUrl').value.trim(),
+                tripadvisorUrl: document.getElementById('tripadvisorUrl').value.trim(),
+                googleUrl: document.getElementById('googleUrl').value.trim(),
+                otas: []
+            };
+
+            // Collect OTA data
+            for (let i = 1; i <= otaCount; i++) {
+                const nameField = document.getElementById(`ota-name-${i}`);
+                const urlField = document.getElementById(`ota-url-${i}`);
+                
+                if (nameField && urlField && nameField.value.trim() && urlField.value.trim()) {
+                    reportData.otas.push({
+                        name: nameField.value.trim(),
+                        url: urlField.value.trim()
+                    });
+                }
+            }
+
+            // Simulate AI processing
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').classList.remove('active');
+                displayReport();
+            }, 2000);
+        }
+
+        // Function to display report
+        function displayReport() {
+            // Update report header
+            document.getElementById('reportHotelName').textContent = `${reportData.hotelName} - Digital Audit Report`;
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            document.getElementById('reportId').textContent = 'ASI-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+
+            // Show/hide sections based on input
+            const hasWebsite = reportData.websiteUrl !== '';
+            const hasReviews = reportData.tripadvisorUrl !== '' || reportData.googleUrl !== '';
+            const hasOtas = reportData.otas.length > 0;
+
+            // Website section
+            if (hasWebsite) {
+                document.getElementById('websiteSection').style.display = 'block';
+                document.getElementById('websiteScoreWidget').style.display = 'block';
+                setTimeout(() => initPerformanceChart(), 100);
+            } else {
+                document.getElementById('websiteSection').style.display = 'none';
+                document.getElementById('websiteScoreWidget').style.display = 'none';
+            }
+
+            // Review section
+            if (hasReviews) {
+                document.getElementById('reviewSection').style.display = 'block';
+                generateReviewCards();
+                setTimeout(() => initReviewChart(), 100);
+            } else {
+                document.getElementById('reviewSection').style.display = 'none';
+            }
+
+            // OTA section
+            if (hasOtas) {
+                document.getElementById('otaSection').style.display = 'block';
+                generateOtaTable();
+            } else {
+                document.getElementById('otaSection').style.display = 'none';
+            }
+
+            // Generate action items based on available data
+            generateActionItems(hasWebsite, hasReviews, hasOtas);
+
+            // Initialize revenue chart
+            setTimeout(() => initRevenueChart(), 100);
+
+            // Animate score circles
+            setTimeout(() => {
+                const circle = document.getElementById('overallScoreCircle');
+                if (circle) {
+                    circle.style.strokeDashoffset = '105'; // 72% of 377
+                }
+            }, 500);
+
+            // Generate QR Code
+            generateQRCode();
+
+            // Show report section
+            document.getElementById('reportSection').classList.add('active');
+            
+            // Scroll to report
+            document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Generate review cards
+        function generateReviewCards() {
+            const container = document.getElementById('reviewCards');
+            container.innerHTML = '';
+
+            const platforms = [];
+            if (reportData.tripadvisorUrl) {
+                platforms.push({ name: 'TripAdvisor', rating: 3.8, reviews: 142, response: 12, icon: '🏆' });
+            }
+            if (reportData.googleUrl) {
+                platforms.push({ name: 'Google', rating: 4.2, reviews: 89, response: 45, icon: '🔍' });
+            }
+            platforms.push({ name: 'Booking.com', rating: 3.5, reviews: 203, response: 28, icon: '🏨' });
+
+            platforms.forEach(platform => {
+                const card = document.createElement('div');
+                card.className = 'ota-card-3d';
+                card.innerHTML = `
+                    <div class="ota-icon-3d">${platform.icon}</div>
+                    <div style="font-weight: 600; color: var(--primary); margin-bottom: 5px; font-size: 1.1em;">${platform.name}</div>
+                    <div style="color: #f39c12; font-size: 1.3em; margin-bottom: 10px;">${'★'.repeat(Math.floor(platform.rating))}${'☆'.repeat(5-Math.floor(platform.rating))} ${platform.rating}/5</div>
+                    <div style="color: var(--accent-3); font-size: 0.9em;">
+                        <div>${platform.reviews} reviews</div>
+                        <div style="margin-top: 5px; color: ${platform.response < 50 ? '#e74c3c' : '#27ae60'};">
+                            ${platform.response}% response rate
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Generate OTA table
+        function generateOtaTable() {
+            const tbody = document.getElementById('otaTableBody');
+            tbody.innerHTML = '';
+
+            reportData.otas.forEach((ota, index) => {
+                const row = document.createElement('tr');
+                const parityStatus = index === 0 ? 'warning' : (index === 1 ? 'danger' : 'success');
+                const parityText = index === 0 ? '$15 higher' : (index === 1 ? '$25 lower' : 'Best rate');
+                
+                row.innerHTML = `
+                    <td><strong>${ota.name}</strong></td>
+                    <td>${3 + index}/5 types</td>
+                    <td>${8 + (index * 4)} photos</td>
+                    <td><span class="status-3d status-${parityStatus}">${parityText}</span></td>
+                    <td>${index === 1 ? '+18% commission cost' : (index === 0 ? 'Direct booking loss' : 'Optimal')}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Generate action items
+        function generateActionItems(hasWebsite, hasReviews, hasOtas) {
+            const container = document.getElementById('actionItems');
+            const items = [];
+
+            if (hasWebsite) {
+                items.push('⚡ Critical: Reduce website load time from 4.8s to under 2s (ASI Booking Engine)');
+                items.push('📱 Implement mobile-first responsive design (35% conversion increase expected)');
+            } else {
+                items.push('🌐 Priority: Launch professional hotel website with integrated booking engine');
+            }
+
+            if (hasReviews) {
+                items.push('💬 Increase review response rate from 34% to 90%+ using ASI automated alerts');
+            }
+
+            if (hasOtas) {
+                items.push('⚖️ Fix rate parity violations detected on Expedia (saving $4,200/month)');
+                items.push('🎯 Expand room type distribution to all major OTAs (+$8,200 revenue opportunity)');
+            } else {
+                items.push('🔷 Connect to major OTA channels (Booking.com, Expedia, Agoda) via ASI Channel Manager');
+            }
+
+            items.push('📈 Implement AI-powered dynamic pricing (15-22% ADR increase projected)');
+            items.push('🔍 Connect TripAdvisor Instant Book and Google Hotel Ads (30% visibility boost)');
+
+            container.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+        }
+
+        // Initialize charts
+        function initPerformanceChart() {
+            const ctx = document.getElementById('performanceChart');
+            if (!ctx) return;
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Homepage', 'Rooms', 'Booking Engine', 'Gallery', 'Contact'],
+                    datasets: [{
+                        label: 'Current Load Time (s)',
+                        data: [4.8, 4.2, 5.5, 6.1, 2.3],
+                        backgroundColor: 'rgba(231, 76, 60, 0.8)',
+                        borderColor: '#e74c3c',
+                        borderWidth: 2,
+                        borderRadius: 8
+                    }, {
+                        label: 'ASI Target (s)',
+                        data: [0.8, 0.9, 1.0, 1.2, 0.6],
+                        backgroundColor: 'rgba(39, 174, 96, 0.8)',
+                        borderColor: '#27ae60',
+                        borderWidth: 2,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Website Speed Optimization Impact',
+                            font: { size: 16, family: 'Space Grotesk' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Seconds' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initReviewChart() {
+            const ctx = document.getElementById('reviewChart');
+            if (!ctx) return;
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'TripAdvisor',
+                        data: [12, 15, 8, 20, 18, 22],
+                        borderColor: '#00af87',
+                        backgroundColor: 'rgba(0, 175, 135, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Google',
+                        data: [8, 12, 15, 14, 16, 19],
+                        borderColor: '#4285f4',
+                        backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Booking.com',
+                        data: [25, 22, 30, 28, 35, 32],
+                        borderColor: '#003580',
+                        backgroundColor: 'rgba(0, 53, 128, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Review Volume Trends (6-Month Analysis)',
+                            font: { size: 16, family: 'Space Grotesk' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initRevenueChart() {
+            const ctx = document.getElementById('revenueChart');
+            if (!ctx) return;
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Current Revenue', 'ASI Growth Potential', 'Revenue Leak'],
+                    datasets: [{
+                        data: [65, 25, 10],
+                        backgroundColor: [
+                            '#00124E',
+                            '#27ae60',
+                            '#e74c3c'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Revenue Distribution & Optimization Potential',
+                            font: { size: 16, family: 'Space Grotesk' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generate QR Code
+        function generateQRCode() {
+            const qrcodeDiv = document.getElementById('qrcode');
+            qrcodeDiv.innerHTML = '';
+            
+            // Create a simple visual representation (in production, use a QR code library)
+            const canvas = document.createElement('canvas');
+            canvas.width = 200;
+            canvas.height = 200;
+            const ctx = canvas.getContext('2d');
+            
+            // Draw QR-like pattern
+            ctx.fillStyle = '#00124E';
+            ctx.fillRect(0, 0, 200, 200);
+            
+            // Draw position detection patterns
+            ctx.fillStyle = 'white';
+            ctx.fillRect(10, 10, 50, 50);
+            ctx.fillRect(140, 10, 50, 50);
+            ctx.fillRect(10, 140, 50, 50);
+            
+            ctx.fillStyle = '#00124E';
+            ctx.fillRect(20, 20, 30, 30);
+            ctx.fillRect(150, 20, 30, 30);
+            ctx.fillRect(20, 150, 30, 30);
+            
+            ctx.fillStyle = 'white';
+            ctx.fillRect(30, 30, 10, 10);
+            ctx.fillRect(160, 30, 10, 10);
+            ctx.fillRect(30, 160, 10, 10);
+            
+            // Draw random data modules
+            for (let i = 0; i < 100; i++) {
+                const x = Math.floor(Math.random() * 140) + 30;
+                const y = Math.floor(Math.random() * 140) + 30;
+                if (Math.random() > 0.5) {
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(x - (x % 10), y - (y % 10), 8, 8);
+                }
+            }
+            
+            qrcodeDiv.appendChild(canvas);
+        }
+
+        // Copy report link
+        function copyReportLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Report link copied to clipboard!');
+            }).catch(() => {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Report link copied to clipboard!');
+            });
+        }
+
+        // Download PDF
+        function downloadPDF() {
+            const element = document.getElementById('reportSection');
+            const opt = {
+                margin: 10,
+                filename: `${reportData.hotelName || 'Hotel'}_Digital_Audit_Report.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Hide buttons temporarily
+            const shareBar = document.querySelector('.share-bar');
+            const originalDisplay = shareBar.style.display;
+            shareBar.style.display = 'none';
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                shareBar.style.display = originalDisplay;
+            });
+        }
+    </script>
+</body>
+</html>
