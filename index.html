@@ -24,7 +24,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f5f6fa; color: var(--primary); line-height: 1.6; }
         
-        /* Loading Overlay */
         .loading-overlay {
             display: none;
             position: fixed;
@@ -39,9 +38,7 @@
             flex-direction: column;
         }
         
-        .loading-overlay.active {
-            display: flex;
-        }
+        .loading-overlay.active { display: flex; }
         
         .spinner {
             width: 60px;
@@ -60,7 +57,6 @@
             font-size: 1.1em;
         }
         
-        /* Tool Mode */
         .tool-mode {
             max-width: 900px;
             margin: 40px auto;
@@ -91,13 +87,8 @@
             gap: 20px;
         }
         
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
+        .form-group { margin-bottom: 20px; }
+        .form-group.full-width { grid-column: 1 / -1; }
         
         .form-group label {
             display: block;
@@ -148,7 +139,6 @@
             color: var(--danger);
         }
         
-        /* Report Mode */
         .report-mode {
             display: none;
             max-width: 1000px;
@@ -157,9 +147,7 @@
             min-height: 100vh;
         }
         
-        .report-mode.active {
-            display: block;
-        }
+        .report-mode.active { display: block; }
         
         .report-header {
             background: var(--gradient-1);
@@ -183,9 +171,7 @@
             border-bottom: 2px solid #e1e8ed;
         }
         
-        .report-body {
-            padding: 40px;
-        }
+        .report-body { padding: 40px; }
         
         .section-card {
             background: white;
@@ -231,7 +217,6 @@
         
         .score-poor { background: #f8d7da; color: #721c24; }
         .score-fair { background: #fff3cd; color: #856404; }
-        .score-good { background: #d4edda; color: #155724; }
         
         .insight-box {
             background: linear-gradient(135deg, #fff 0%, #f0f4ff 100%);
@@ -380,7 +365,6 @@
         
         .priority-high { color: var(--danger); font-weight: 700; }
         .priority-medium { color: var(--warning); font-weight: 700; }
-        .priority-low { color: var(--success); font-weight: 700; }
         
         .cta-section {
             background: var(--gradient-1);
@@ -409,9 +393,7 @@
             justify-content: center;
         }
         
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
         
         .modal-content {
             background: white;
@@ -435,10 +417,10 @@
             font-family: monospace;
             margin: 20px 0;
             border: 2px solid var(--secondary);
-            font-size: 0.9em;
+            font-size: 0.85em;
+            max-height: 100px;
+            overflow-y: auto;
         }
-        
-        .hidden { display: none !important; }
         
         @media print {
             .report-actions, .modal-overlay, .loading-overlay { display: none !important; }
@@ -448,14 +430,12 @@
 </head>
 <body>
 
-    <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="spinner"></div>
         <div class="loading-text">🔍 Analyzing reviews from Google & TripAdvisor...</div>
         <div style="color: rgba(255,255,255,0.8); margin-top: 10px; font-size: 0.9em;">This may take 30-60 seconds</div>
     </div>
 
-    <!-- ==================== TOOL MODE (Internal) ==================== -->
     <div class="tool-mode" id="toolMode">
         <div class="tool-card">
             <div class="tool-header">
@@ -486,13 +466,11 @@
                 <div class="form-group full-width">
                     <label>Google Reviews URL *</label>
                     <input type="url" id="googleUrl" placeholder="https://g.page/hotel-name/reviews" required>
-                    <small style="color: var(--secondary); margin-top: 5px; display: block;">We'll automatically fetch recent negative reviews</small>
                 </div>
                 
                 <div class="form-group full-width">
                     <label>TripAdvisor URL *</label>
                     <input type="url" id="tripadvisorUrl" placeholder="https://www.tripadvisor.com/Hotel_Review-..." required>
-                    <small style="color: var(--secondary); margin-top: 5px; display: block;">We'll automatically fetch recent negative reviews</small>
                 </div>
                 
                 <div class="form-group full-width">
@@ -508,9 +486,7 @@
         </div>
     </div>
 
-    <!-- ==================== REPORT MODE (End User) ==================== -->
     <div class="report-mode" id="reportMode">
-        
         <div class="report-header">
             <h1 id="rptHotelName">Hotel Audit Report</h1>
             <p>Comprehensive Digital & Operational Analysis | <span id="rptDate"></span></p>
@@ -529,7 +505,6 @@
         <div class="report-body" id="reportContent"></div>
     </div>
 
-    <!-- Share Modal -->
     <div class="modal-overlay" id="shareModal">
         <div class="modal-content">
             <h2>🔗 Report Link Generated</h2>
@@ -563,16 +538,14 @@
             container.appendChild(div);
         }
 
-        // Simulated review fetching
         function fetchReviewsFromUrls(googleUrl, tripadvisorUrl) {
             return new Promise((resolve) => {
-                // Simulate API delay
                 setTimeout(() => {
                     const mockReviews = [
                         {
                             platform: 'Google',
                             rating: 2,
-                            text: "Terrible check-in experience. Waited 45 minutes even though I had a confirmed booking. Staff seemed confused about room availability. Room wasn't ready until 5 PM despite 2 PM check-in promise.",
+                            text: "Terrible check-in experience. Waited 45 minutes even though I had a confirmed booking. Staff seemed confused about room availability.",
                             author: "Business Traveler",
                             date: "2 weeks ago",
                             issues: ['CHECKIN', 'RESERVATION']
@@ -580,7 +553,7 @@
                         {
                             platform: 'TripAdvisor',
                             rating: 2,
-                            text: "Room was not cleaned properly. Found previous guest's items in the drawer. Bathroom had hair in the drain. When complained, housekeeping took 3 hours to respond. Front desk staff was rude and unapologetic.",
+                            text: "Room was not cleaned properly. Found previous guest's items in the drawer. Bathroom had hair in the drain. When complained, housekeeping took 3 hours to respond.",
                             author: "Family Traveler",
                             date: "1 month ago",
                             issues: ['HOUSEKEEPING', 'STAFF']
@@ -588,7 +561,7 @@
                         {
                             platform: 'Google',
                             rating: 1,
-                            text: "Overbooked! They sent us to another hotel at midnight. No prior communication. Ruined our anniversary trip. Management offered no compensation. Never again!",
+                            text: "Overbooked! They sent us to another hotel at midnight. No prior communication. Ruined our anniversary trip.",
                             author: "Couple",
                             date: "3 weeks ago",
                             issues: ['RESERVATION', 'COMMUNICATION']
@@ -596,25 +569,43 @@
                         {
                             platform: 'TripAdvisor',
                             rating: 2,
-                            text: "Billing was a nightmare. Charged twice for the same stay. Took 5 days to get refund. No clear invoice provided. Had to call 4 times to resolve. Very unprofessional accounting.",
+                            text: "Billing was a nightmare. Charged twice for the same stay. Took 5 days to get refund. No clear invoice provided.",
                             author: "Solo Traveler",
                             date: "2 months ago",
                             issues: ['BILLING', 'COMMUNICATION']
                         }
                     ];
                     resolve(mockReviews);
-                }, 2000); // 2 second delay
+                }, 2000);
             });
         }
 
-        // Main function to start report generation
+        // SAFE encoding for URLs - handles special characters
+        function safeEncode(obj) {
+            try {
+                return encodeURIComponent(JSON.stringify(obj));
+            } catch (e) {
+                console.error('Encoding error:', e);
+                return '';
+            }
+        }
+
+        // SAFE decoding from URLs
+        function safeDecode(str) {
+            try {
+                return JSON.parse(decodeURIComponent(str));
+            } catch (e) {
+                console.error('Decoding error:', e);
+                return null;
+            }
+        }
+
         async function startReportGeneration() {
             const hotelName = document.getElementById('hotelName').value.trim();
             const googleUrl = document.getElementById('googleUrl').value.trim();
             const tripadvisorUrl = document.getElementById('tripadvisorUrl').value.trim();
             const location = document.getElementById('location').value;
             
-            // Validation
             if (!hotelName) {
                 alert('Please enter Hotel Name');
                 document.getElementById('hotelName').focus();
@@ -636,14 +627,11 @@
                 return;
             }
 
-            // Show loading
             document.getElementById('loadingOverlay').classList.add('active');
 
             try {
-                // Fetch reviews
                 const reviews = await fetchReviewsFromUrls(googleUrl, tripadvisorUrl);
 
-                // Collect OTAs
                 const otas = [];
                 document.querySelectorAll('.ota-row').forEach(row => {
                     const name = row.querySelector('.ota-name').value;
@@ -651,7 +639,6 @@
                     if (name && url) otas.push({ name, url });
                 });
 
-                // Build report data
                 reportData = {
                     hotelName: hotelName,
                     currency: currency,
@@ -663,33 +650,34 @@
                     id: 'ASI-' + Math.random().toString(36).substr(2, 9).toUpperCase()
                 };
 
-                // Hide loading
                 document.getElementById('loadingOverlay').classList.remove('active');
 
-                // Generate shareable link
-                const reportJson = btoa(JSON.stringify(reportData));
+                // Use SAFE encoding
+                const reportJson = safeEncode(reportData);
+                if (!reportJson) {
+                    throw new Error('Failed to encode report data');
+                }
+                
                 const baseUrl = window.location.origin + window.location.pathname;
                 const shareUrl = baseUrl + '?report=' + reportJson;
                 
-                // Show modal with link
                 document.getElementById('shareLink').textContent = shareUrl;
                 document.getElementById('shareModal').classList.add('active');
 
             } catch (error) {
-                console.error('Error generating report:', error);
+                console.error('Error:', error);
                 document.getElementById('loadingOverlay').classList.remove('active');
-                alert('Error generating report. Please try again.');
+                alert('Error: ' + error.message);
             }
         }
 
         function copyLink() {
             navigator.clipboard.writeText(document.getElementById('shareLink').textContent)
-                .then(() => alert('✅ Link copied! Prospect will see clean report only.'));
+                .then(() => alert('✅ Link copied!'));
         }
 
         function closeModal() {
             document.getElementById('shareModal').classList.remove('active');
-            // Now render and show the report
             renderReport();
         }
 
@@ -697,11 +685,9 @@
             const data = reportData;
             const curr = data.currency;
             
-            // Hide tool, show report
             document.getElementById('toolMode').style.display = 'none';
             document.getElementById('reportMode').classList.add('active');
             
-            // Update header
             document.getElementById('rptHotelName').textContent = data.hotelName;
             document.getElementById('rptDate').textContent = data.date;
             document.getElementById('rptMeta').textContent = `Report ID: ${data.id}`;
@@ -709,7 +695,6 @@
             
             let html = '';
 
-            // EXECUTIVE SUMMARY
             html += `
                 <div class="section-card warning">
                     <div class="section-header">
@@ -727,7 +712,7 @@
                         <div class="insight-title">🔍 Critical Findings</div>
                         <p>Analysis of <strong>${data.reviews.length} recent negative reviews</strong> from Google & TripAdvisor 
                         reveals <strong>operational inefficiencies</strong> in check-in process, housekeeping coordination, 
-                        and reservation management. These issues are directly impacting guest satisfaction and online reputation.</p>
+                        and reservation management.</p>
                     </div>
                     
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0;">
@@ -747,7 +732,6 @@
                 </div>
             `;
 
-            // WEBSITE ANALYSIS
             if (data.hasWebsite) {
                 html += `
                     <div class="section-card danger">
@@ -767,19 +751,10 @@
                             <span class="metric-label">Mobile Booking Completion Rate</span>
                             <span class="metric-value" style="color: var(--danger);">32% (Industry: 65%)</span>
                         </div>
-                        <div class="metric-row">
-                            <span class="metric-label">Booking Form Fields</span>
-                            <span class="metric-value" style="color: var(--danger);">12 fields (Best practice: 6)</span>
-                        </div>
                         
                         <div class="insight-box">
                             <div class="problem-statement">
-                                ❌ PROBLEM: 68% of your traffic is mobile, but your booking engine is not mobile-optimized. 
-                                Guests abandon due to slow loading (4.8s) and complex forms.
-                            </div>
-                            
-                            <div style="margin: 15px 0;">
-                                <strong>Impact:</strong> Losing <strong>48% of potential direct bookings</strong> due to poor mobile experience.
+                                ❌ PROBLEM: 68% of your traffic is mobile, but your booking engine is not mobile-optimized.
                             </div>
                             
                             <div class="solution-box">
@@ -787,9 +762,7 @@
                                 <ul class="feature-list">
                                     <li><strong>Lightning Fast:</strong> Loads in under 1 second with global CDN</li>
                                     <li><strong>Mobile-First Design:</strong> Thumb-friendly navigation, 3-click booking</li>
-                                    <li><strong>Smart Forms:</strong> Auto-fill from previous stays, reduce fields by 50%</li>
                                     <li><strong>One-Tap Payment:</strong> Apple Pay, Google Pay, UPI integration</li>
-                                    <li><strong>Progressive Web App:</strong> Works offline, push notifications for offers</li>
                                 </ul>
                                 <p style="margin-top: 15px;">
                                     <strong>Outcome:</strong> Hotels achieve <strong>65%+ mobile booking completion</strong> 
@@ -801,7 +774,6 @@
                 `;
             }
 
-            // OPERATIONAL ANALYSIS FROM REVIEWS
             if (data.reviews.length > 0) {
                 html += `
                     <div class="section-card danger">
@@ -813,12 +785,11 @@
                             </div>
                         </div>
                         <p style="color: var(--secondary); margin-bottom: 20px;">
-                            The following reviews were automatically fetched from your Google & TripAdvisor profiles. 
-                            Each issue is mapped to specific ASI PMS solutions.
+                            The following reviews were automatically fetched from your Google & TripAdvisor profiles.
                         </p>
                 `;
                 
-                data.reviews.forEach((review, idx) => {
+                data.reviews.forEach((review) => {
                     html += `
                         <div class="review-card">
                             <div class="review-header">
@@ -833,7 +804,6 @@
                         </div>
                     `;
                     
-                    // Show solution for each detected issue
                     review.issues.forEach(issue => {
                         html += generateIssueSolution(issue);
                     });
@@ -842,7 +812,6 @@
                 html += `</div>`;
             }
 
-            // OTA ANALYSIS
             if (data.otas.length > 0) {
                 html += `
                     <div class="section-card warning">
@@ -854,41 +823,9 @@
                             </div>
                         </div>
                         
-                        <table class="action-table">
-                            <thead>
-                                <tr>
-                                    <th>Channel</th>
-                                    <th>Issue Detected</th>
-                                    <th>Impact on Direct Bookings</th>
-                                    <th>Priority</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Booking.com</strong></td>
-                                    <td>Rate undercutting by 8-12%</td>
-                                    <td>Guests book OTA instead of direct</td>
-                                    <td class="priority-high">HIGH</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Expedia</strong></td>
-                                    <td>Commission 15-25% vs direct 0%</td>
-                                    <td>25% revenue loss per booking</td>
-                                    <td class="priority-high">HIGH</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Direct Website</strong></td>
-                                    <td>Rate not competitive vs OTAs</td>
-                                    <td>Traffic doesn't convert</td>
-                                    <td class="priority-medium">MEDIUM</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
                         <div class="insight-box">
                             <div class="problem-statement">
-                                ❌ PROBLEM: Rate parity violations confuse guests. When they see lower rates on OTAs, 
-                                they book there instead of direct—even when total cost (with commission) is higher for you.
+                                ❌ PROBLEM: Rate parity violations confuse guests. They book on OTAs instead of direct.
                             </div>
                             
                             <div class="solution-box">
@@ -897,8 +834,6 @@
                                     <li><strong>Real-Time Sync:</strong> 150+ OTAs updated in under 30 seconds</li>
                                     <li><strong>Parity Monitor:</strong> Instant alerts when OTAs undercut your rates</li>
                                     <li><strong>Smart Pricing:</strong> Direct rates always 5-10% better than OTA+commission</li>
-                                    <li><strong>Inventory Control:</strong> Close OTAs during high-demand, drive direct</li>
-                                    <li><strong>Channel Analytics:</strong> See which channels deliver profitable guests</li>
                                 </ul>
                                 <p style="margin-top: 15px;">
                                     <strong>Outcome:</strong> Hotels increase <strong>direct bookings by 25-40%</strong> 
@@ -910,7 +845,6 @@
                 `;
             }
 
-            // REPUTATION & REVIEW MANAGEMENT
             html += `
                 <div class="section-card warning">
                     <div class="section-header">
@@ -929,16 +863,11 @@
                         <span class="metric-label">Average Response Time</span>
                         <span class="metric-value" style="color: var(--danger);">4.2 days (Target: <4 hours)</span>
                     </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Negative Review Recovery</span>
-                        <span class="metric-value" style="color: var(--danger);">12% (Industry: 45%)</span>
-                    </div>
                     
                     <div class="insight-box">
                         <div class="problem-statement">
                             ❌ PROBLEM: Slow responses to negative reviews signal poor customer service. 
-                            78% of travelers won't book if management ignores reviews. Each unanswered negative 
-                            review costs approximately 30 potential bookings.
+                            78% of travelers won't book if management ignores reviews.
                         </div>
                         
                         <div class="solution-box">
@@ -946,9 +875,7 @@
                             <ul class="feature-list">
                                 <li><strong>Unified Inbox:</strong> All reviews (Google, TripAdvisor, Booking.com) in one place</li>
                                 <li><strong>AI Response Assistant:</strong> Auto-suggests professional replies based on sentiment</li>
-                                <li><strong>Response Templates:</strong> Pre-written responses for common scenarios</li>
                                 <li><strong>Auto-Escalation:</strong> Negative reviews flagged to management within 1 hour</li>
-                                <li><strong>Performance Tracking:</strong> Monitor response rate, time, sentiment trends</li>
                             </ul>
                             <p style="margin-top: 15px;">
                                 <strong>Outcome:</strong> Achieve <strong>95%+ response rate</strong>, respond in 
@@ -959,7 +886,6 @@
                 </div>
             `;
 
-            // 90-DAY ACTION PLAN
             html += `
                 <div class="section-card">
                     <div class="section-header">
@@ -1008,13 +934,11 @@
                 </div>
             `;
 
-            // CTA
             html += `
                 <div class="cta-section">
                     <h3>Transform Your Hotel Operations with ASI</h3>
                     <p style="margin-bottom: 25px; opacity: 0.95;">
-                        Join 2,500+ hotels using our integrated PMS, Channel Manager, and Booking Engine 
-                        to deliver exceptional guest experiences.
+                        Join 2,500+ hotels using our integrated PMS, Channel Manager, and Booking Engine.
                     </p>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; margin: 30px 0;">
                         <div>
@@ -1148,20 +1072,21 @@
             });
         }
 
-        // Load from URL if shared
+        // Load from URL if shared - using SAFE decode
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const reportParam = params.get('report');
             
             if (reportParam) {
-                try {
-                    reportData = JSON.parse(atob(reportParam));
+                const decoded = safeDecode(reportParam);
+                if (decoded) {
+                    reportData = decoded;
                     currency = reportData.currency;
                     document.getElementById('toolMode').style.display = 'none';
                     document.getElementById('reportMode').classList.add('active');
                     renderReport();
-                } catch(e) {
-                    console.error('Invalid report');
+                } else {
+                    alert('Invalid or corrupted report link. Please generate a new report.');
                 }
             } else {
                 addOta();
