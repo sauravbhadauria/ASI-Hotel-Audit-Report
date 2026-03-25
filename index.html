@@ -502,7 +502,7 @@
                 </div>
             </div>
             
-            <button type="button" class="btn btn-primary" onclick="generateReport()">
+            <button type="button" class="btn btn-primary" onclick="startReportGeneration()">
                 🔍 Fetch Reviews & Generate Audit Report
             </button>
         </div>
@@ -563,124 +563,123 @@
             container.appendChild(div);
         }
 
-        // Simulate fetching reviews from URLs (in production, this would be a backend API)
-        async function fetchReviewsFromUrls(googleUrl, tripadvisorUrl) {
-            // Simulated delay to mimic API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            // Simulated negative reviews based on common hotel issues
-            const mockReviews = [
-                {
-                    platform: 'Google',
-                    rating: 2,
-                    text: "Terrible check-in experience. Waited 45 minutes even though I had a confirmed booking. Staff seemed confused about room availability. Room wasn't ready until 5 PM despite 2 PM check-in promise.",
-                    author: "Business Traveler",
-                    date: "2 weeks ago",
-                    issues: ['CHECKIN', 'RESERVATION']
-                },
-                {
-                    platform: 'TripAdvisor',
-                    rating: 2,
-                    text: "Room was not cleaned properly. Found previous guest's items in the drawer. Bathroom had hair in the drain. When complained, housekeeping took 3 hours to respond. Front desk staff was rude and unapologetic.",
-                    author: "Family Traveler",
-                    date: "1 month ago",
-                    issues: ['HOUSEKEEPING', 'STAFF']
-                },
-                {
-                    platform: 'Google',
-                    rating: 1,
-                    text: "Overbooked! They sent us to another hotel at midnight. No prior communication. Ruined our anniversary trip. Management offered no compensation. Never again!",
-                    author: "Couple",
-                    date: "3 weeks ago",
-                    issues: ['RESERVATION', 'COMMUNICATION']
-                },
-                {
-                    platform: 'TripAdvisor',
-                    rating: 2,
-                    text: "Billing was a nightmare. Charged twice for the same stay. Took 5 days to get refund. No clear invoice provided. Had to call 4 times to resolve. Very unprofessional accounting.",
-                    author: "Solo Traveler",
-                    date: "2 months ago",
-                    issues: ['BILLING', 'COMMUNICATION']
-                }
-            ];
-            
-            // In real implementation, you would:
-            // 1. Call backend API with URLs
-            // 2. Scrape/analyze reviews
-            // 3. Return actual review data
-            
-            return mockReviews;
+        // Simulated review fetching
+        function fetchReviewsFromUrls(googleUrl, tripadvisorUrl) {
+            return new Promise((resolve) => {
+                // Simulate API delay
+                setTimeout(() => {
+                    const mockReviews = [
+                        {
+                            platform: 'Google',
+                            rating: 2,
+                            text: "Terrible check-in experience. Waited 45 minutes even though I had a confirmed booking. Staff seemed confused about room availability. Room wasn't ready until 5 PM despite 2 PM check-in promise.",
+                            author: "Business Traveler",
+                            date: "2 weeks ago",
+                            issues: ['CHECKIN', 'RESERVATION']
+                        },
+                        {
+                            platform: 'TripAdvisor',
+                            rating: 2,
+                            text: "Room was not cleaned properly. Found previous guest's items in the drawer. Bathroom had hair in the drain. When complained, housekeeping took 3 hours to respond. Front desk staff was rude and unapologetic.",
+                            author: "Family Traveler",
+                            date: "1 month ago",
+                            issues: ['HOUSEKEEPING', 'STAFF']
+                        },
+                        {
+                            platform: 'Google',
+                            rating: 1,
+                            text: "Overbooked! They sent us to another hotel at midnight. No prior communication. Ruined our anniversary trip. Management offered no compensation. Never again!",
+                            author: "Couple",
+                            date: "3 weeks ago",
+                            issues: ['RESERVATION', 'COMMUNICATION']
+                        },
+                        {
+                            platform: 'TripAdvisor',
+                            rating: 2,
+                            text: "Billing was a nightmare. Charged twice for the same stay. Took 5 days to get refund. No clear invoice provided. Had to call 4 times to resolve. Very unprofessional accounting.",
+                            author: "Solo Traveler",
+                            date: "2 months ago",
+                            issues: ['BILLING', 'COMMUNICATION']
+                        }
+                    ];
+                    resolve(mockReviews);
+                }, 2000); // 2 second delay
+            });
         }
 
-        function analyzeReviewIssues(review) {
-            const issues = [];
-            const text = review.toLowerCase();
-            
-            const patterns = {
-                'CHECKIN': ['check', 'wait', 'min', 'hour', 'delay', 'queue', 'line', 'slow'],
-                'HOUSEKEEPING': ['clean', 'dirty', 'housekeeping', 'hair', 'dust', 'smell', 'bathroom'],
-                'STAFF': ['rude', 'unprofessional', 'staff', 'untrained', 'unhelpful', 'attitude'],
-                'RESERVATION': ['book', 'overbook', 'confirm', 'reservation', 'cancel', 'room not available'],
-                'BILLING': ['bill', 'charge', 'payment', 'invoice', 'refund', 'double charge', 'extra'],
-                'MAINTENANCE': ['ac', 'wifi', 'tv', 'broken', 'repair', 'maintenance', 'not working', 'leak'],
-                'COMMUNICATION': ['call', 'email', 'response', 'reply', 'inform', 'tell us', 'no one']
-            };
-            
-            for (const [issueType, keywords] of Object.entries(patterns)) {
-                if (keywords.some(kw => text.includes(kw))) {
-                    issues.push(issueType);
-                }
-            }
-            
-            return issues.length > 0 ? issues : ['GENERAL'];
-        }
-
-        async function generateReport() {
+        // Main function to start report generation
+        async function startReportGeneration() {
             const hotelName = document.getElementById('hotelName').value.trim();
             const googleUrl = document.getElementById('googleUrl').value.trim();
             const tripadvisorUrl = document.getElementById('tripadvisorUrl').value.trim();
+            const location = document.getElementById('location').value;
             
-            if (!hotelName || !googleUrl || !tripadvisorUrl) {
-                alert('Please fill Hotel Name, Google Reviews URL, and TripAdvisor URL');
+            // Validation
+            if (!hotelName) {
+                alert('Please enter Hotel Name');
+                document.getElementById('hotelName').focus();
+                return;
+            }
+            if (!location) {
+                alert('Please select Location');
+                document.getElementById('location').focus();
+                return;
+            }
+            if (!googleUrl) {
+                alert('Please enter Google Reviews URL');
+                document.getElementById('googleUrl').focus();
+                return;
+            }
+            if (!tripadvisorUrl) {
+                alert('Please enter TripAdvisor URL');
+                document.getElementById('tripadvisorUrl').focus();
                 return;
             }
 
             // Show loading
             document.getElementById('loadingOverlay').classList.add('active');
 
-            // Fetch reviews (simulated)
-            const reviews = await fetchReviewsFromUrls(googleUrl, tripadvisorUrl);
+            try {
+                // Fetch reviews
+                const reviews = await fetchReviewsFromUrls(googleUrl, tripadvisorUrl);
 
-            // Collect OTAs
-            const otas = [];
-            document.querySelectorAll('.ota-row').forEach(row => {
-                const name = row.querySelector('.ota-name').value;
-                const url = row.querySelector('.ota-url').value;
-                if (name && url) otas.push({ name, url });
-            });
+                // Collect OTAs
+                const otas = [];
+                document.querySelectorAll('.ota-row').forEach(row => {
+                    const name = row.querySelector('.ota-name').value;
+                    const url = row.querySelector('.ota-url').value;
+                    if (name && url) otas.push({ name, url });
+                });
 
-            // Build report data
-            reportData = {
-                hotelName,
-                currency,
-                location: document.getElementById('location').value,
-                hasWebsite: document.getElementById('websiteUrl').value !== '',
-                reviews,
-                otas,
-                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-                id: 'ASI-' + Math.random().toString(36).substr(2, 9).toUpperCase()
-            };
+                // Build report data
+                reportData = {
+                    hotelName: hotelName,
+                    currency: currency,
+                    location: location,
+                    hasWebsite: document.getElementById('websiteUrl').value !== '',
+                    reviews: reviews,
+                    otas: otas,
+                    date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    id: 'ASI-' + Math.random().toString(36).substr(2, 9).toUpperCase()
+                };
 
-            // Hide loading
-            document.getElementById('loadingOverlay').classList.remove('active');
+                // Hide loading
+                document.getElementById('loadingOverlay').classList.remove('active');
 
-            // Generate shareable link
-            const reportJson = btoa(JSON.stringify(reportData));
-            const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = baseUrl + '?report=' + reportJson;
-            
-            document.getElementById('shareLink').textContent = shareUrl;
-            document.getElementById('shareModal').classList.add('active');
+                // Generate shareable link
+                const reportJson = btoa(JSON.stringify(reportData));
+                const baseUrl = window.location.origin + window.location.pathname;
+                const shareUrl = baseUrl + '?report=' + reportJson;
+                
+                // Show modal with link
+                document.getElementById('shareLink').textContent = shareUrl;
+                document.getElementById('shareModal').classList.add('active');
+
+            } catch (error) {
+                console.error('Error generating report:', error);
+                document.getElementById('loadingOverlay').classList.remove('active');
+                alert('Error generating report. Please try again.');
+            }
         }
 
         function copyLink() {
@@ -690,6 +689,7 @@
 
         function closeModal() {
             document.getElementById('shareModal').classList.remove('active');
+            // Now render and show the report
             renderReport();
         }
 
@@ -697,9 +697,11 @@
             const data = reportData;
             const curr = data.currency;
             
+            // Hide tool, show report
             document.getElementById('toolMode').style.display = 'none';
             document.getElementById('reportMode').classList.add('active');
             
+            // Update header
             document.getElementById('rptHotelName').textContent = data.hotelName;
             document.getElementById('rptDate').textContent = data.date;
             document.getElementById('rptMeta').textContent = `Report ID: ${data.id}`;
@@ -799,7 +801,7 @@
                 `;
             }
 
-            // OPERATIONAL ANALYSIS FROM AUTO-FETCHED REVIEWS
+            // OPERATIONAL ANALYSIS FROM REVIEWS
             if (data.reviews.length > 0) {
                 html += `
                     <div class="section-card danger">
@@ -817,8 +819,6 @@
                 `;
                 
                 data.reviews.forEach((review, idx) => {
-                    const issues = review.issues || analyzeReviewIssues(review.text);
-                    
                     html += `
                         <div class="review-card">
                             <div class="review-header">
@@ -834,7 +834,7 @@
                     `;
                     
                     // Show solution for each detected issue
-                    issues.forEach(issue => {
+                    review.issues.forEach(issue => {
                         html += generateIssueSolution(issue);
                     });
                 });
@@ -1099,17 +1099,6 @@
                     ],
                     outcome: '80% fewer billing disputes, 3x faster checkout'
                 },
-                'MAINTENANCE': {
-                    title: '🔧 ASI PMS - Maintenance Management',
-                    features: [
-                        'Guest Issue Tracking: Log complaints instantly',
-                        'Auto Work Orders: Create tickets from guest feedback',
-                        'Preventive Maintenance: Schedule regular checks',
-                        'Vendor Management: Track external contractors',
-                        'Asset Tracking: Monitor equipment lifecycle'
-                    ],
-                    outcome: '60% faster issue resolution, 40% less equipment failure'
-                },
                 'COMMUNICATION': {
                     title: '📨 ASI PMS - Guest Communication',
                     features: [
@@ -1120,21 +1109,10 @@
                         'Multi-language Support: Auto-translate for international guests'
                     ],
                     outcome: '90% faster response time, 35% higher guest satisfaction'
-                },
-                'GENERAL': {
-                    title: '🎯 ASI Integrated Hotel Management Solution',
-                    features: [
-                        'Centralized Dashboard: All operations in one screen',
-                        'Automated Workflows: Reduce manual tasks by 60%',
-                        'Real-time Analytics: Spot issues before they escalate',
-                        'Guest Profile Management: Personalize every stay',
-                        'Staff Performance Tracking: Identify training needs'
-                    ],
-                    outcome: 'Streamlined operations, happier guests, higher revenue'
                 }
             };
 
-            const sol = solutions[issueType] || solutions['GENERAL'];
+            const sol = solutions[issueType] || solutions['COMMUNICATION'];
             
             return `
                 <div style="margin: 20px 0; padding: 20px; background: #fff5f5; border-radius: 12px; border-left: 4px solid var(--danger);">
